@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.name }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="d-lg-flex flex-nowrap">
+            <div>
+                <h1>
+                    {{ object.name }}
+                </h1>
+                <p>{{ object.html_description|safe }}</p>
+                <a class="btn btn-primary" href="{{ object.link }}">Открыть репозиторий</a>
+            </div>
+            <img class="img-fluid img-thumbnail" style="width: 600px; height: 600px" src="{{ object.logo.url }}" alt="">
+        </div>
+        <div></div>
+    </div>
+{% endblock %}

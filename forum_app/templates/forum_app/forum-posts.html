@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ forum.name }} {{ topic.title }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h3><a href="{{ forum.get_absolute_url }}">{{ forum.name }}</a> - <a
+                href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></h3>
+    </div>
+    <div>
+        {% for object in object_list %}
+            <div>
+                <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        <a href="{% url 'post-create' %}" class="btn btn-primary">Создать пост</a>
+    </div>
+{% endblock %}

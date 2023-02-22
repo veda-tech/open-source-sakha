@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Топики форума - {{ forum.name }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div>
+            <h3><a href="{{ forum.get_absolute_url }}">{{ forum.name }}</a></h3>
+        </div>
+        <div>
+            {% for object in object_list %}
+                <div>
+                    <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
