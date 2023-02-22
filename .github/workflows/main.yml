@@ -16,19 +16,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: 3.9
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Run black
-        run: python manage.py black
+        run: black --check .
 
       - name: Run isort
-        run: python manage.py isort
+        run: isort --check-only .
 
       - name: Run mypy
         run: mypy .
 
       - name: Run flake8
-        run: python manage.py flake8
+        run: flake8 .
