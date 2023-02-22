@@ -1,0 +1,34 @@
+name: Django Code Quality
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  check-code-quality:
+    name: Check code quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run black
+        run: python manage.py black
+
+      - name: Run isort
+        run: python manage.py isort
+
+      - name: Run mypy
+        run: mypy .
+
+      - name: Run flake8
+        run: python manage.py flake8
