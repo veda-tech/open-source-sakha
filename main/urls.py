@@ -1,9 +1,6 @@
-from main.views import AboutPage, CompanyPage, FAQPage, IndexPage
-
 from django.urls import path
 
-
-
+from main.views import AboutPage, CompanyPage, FAQPage, IndexPage
 
 
 urlpatterns = [
