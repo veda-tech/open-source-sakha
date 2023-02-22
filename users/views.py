@@ -9,35 +9,38 @@ from users.models import User
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect("/")
 
 
 class LoginPage(FormView):
     form_class = LoginForm
-    template_name = 'users/login.html'
+    template_name = "users/login.html"
 
     def form_valid(self, form):
-        user = User.objects.filter(username=form.cleaned_data['username']).first()
+        user = User.objects.filter(username=form.cleaned_data["username"]).first()
         if user is None:
             return super().get(self.request)
-        if user.check_password(form.cleaned_data['password']):
+        if user.check_password(form.cleaned_data["password"]):
             login(self.request, user)
-            return redirect('/')
+            return redirect("/")
         else:
             return super().get(self.request)
 
 
 class RegistrationPage(FormView):
     form_class = RegistrationForm
-    template_name = 'users/registration.html'
+    template_name = "users/registration.html"
 
     def get_success_url(self):
-        return '/'
+        return "/"
 
     def form_valid(self, form):
-        username, password = form.cleaned_data['username'].lower(), form.cleaned_data['username']
+        username, password = (
+            form.cleaned_data["username"].lower(),
+            form.cleaned_data["username"],
+        )
         if User.objects.filter(username=username).exists():
-            form.add_error('username', 'Такой пользователь уже существует')
+            form.add_error("username", "Такой пользователь уже существует")
             return super().form_invalid(form)
         user = User(username=username)
         user.set_password(password)
@@ -45,9 +48,8 @@ class RegistrationPage(FormView):
         return super().form_valid(form)
 
 
-
 class UserProfilePage(LoginRequiredMixin, DetailView):
-    template_name = 'users/profile.html'
+    template_name = "users/profile.html"
 
     def get_object(self, queryset=None):
         return self.request.user

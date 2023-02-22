@@ -11,4 +11,4 @@ class LoginForm(forms.Form):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ["username", "password"]

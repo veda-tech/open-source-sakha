@@ -13,10 +13,10 @@ class Forum(AbstractModel):
         return self.name
 
     def get_absolute_url(self):
-        return f'/forums/{self.uuid}'
+        return f"/forums/{self.uuid}"
 
     class Meta:
-        ordering = ['name']
+        ordering = ["name"]
 
 
 class Topic(AbstractModel):
@@ -24,13 +24,13 @@ class Topic(AbstractModel):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.forum.name}-{self.title}'
+        return f"{self.forum.name}-{self.title}"
 
     def get_absolute_url(self):
-        return f'/forums/{self.forum_id}/{self.uuid}'
+        return f"/forums/{self.forum_id}/{self.uuid}"
 
     class Meta:
-        ordering = ['forum__name']
+        ordering = ["forum__name"]
 
 
 class Post(AbstractModel):
@@ -43,7 +43,7 @@ class Post(AbstractModel):
         return self.title
 
     def get_absolute_url(self):
-        return f'/forums/{self.topic.forum_id}/{self.topic_id}/{self.uuid}'
+        return f"/forums/{self.topic.forum_id}/{self.topic_id}/{self.uuid}"
 
 
 class Comment(AbstractModel):
@@ -52,4 +52,4 @@ class Comment(AbstractModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ["-created"]
