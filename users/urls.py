@@ -1,11 +1,6 @@
 from django.urls import path
 
-from users.views import (
-    logout_view,
-    LoginPage,
-    RegistrationPage,
-    UserProfilePage,
-)
+from users.views import LoginPage, RegistrationPage, UserProfilePage, logout_view
 
 urlpatterns = [
     path("logout", logout_view, name="users-logout"),

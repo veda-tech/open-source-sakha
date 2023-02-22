@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from forum_app.models import Forum, Post, Topic, Comment
+from forum_app.models import Comment, Forum, Post, Topic
 
 
 @admin.register(Forum)

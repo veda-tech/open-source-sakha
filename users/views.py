@@ -1,9 +1,9 @@
-from django.contrib.auth import logout, login
+from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.views.generic import FormView, DetailView
+from django.views.generic import DetailView, FormView
 
-from users.forms import RegistrationForm, LoginForm
+from users.forms import LoginForm, RegistrationForm
 from users.models import User
 
 

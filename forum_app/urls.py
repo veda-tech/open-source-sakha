@@ -1,11 +1,11 @@
 from django.urls import path
 
 from forum_app.views import (
+    ForumListPage,
+    PostCreatePage,
     PostDetailPage,
     PostListPage,
-    ForumListPage,
     TopicListPage,
-    PostCreatePage,
     add_comment,
 )
 

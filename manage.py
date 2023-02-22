@@ -13,6 +13,13 @@ def main():
         if "black" in sys.argv:
             os.system("black . --exclude venv")
             sys.exit()
+        if "flake8" in sys.argv:
+            os.system("flake8 . --config=.flake8")
+            sys.exit()
+
+        if "isort" in sys.argv:
+            os.system("isort . --profile black")
+            sys.exit()
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "

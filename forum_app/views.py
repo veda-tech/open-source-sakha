@@ -1,11 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 
-from .models import Forum, Topic, Post
 from .forms import CommentForm, PostForm
+from .models import Forum, Post, Topic
 
 
 class ForumListPage(ListView):
